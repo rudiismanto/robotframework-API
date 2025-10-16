@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.11.4 on win32)" generated="2025-10-16T15:45:40.531692" rpa="false" schemaversion="5">
+<suite id="s1" name="Post-Object" source="c:\Users\rudii\OneDrive\Documents\robotframework-API\API_POST\post-object.robot">
+<test id="s1-t1" name="POST --&gt; https://api.restful-api.dev/objects" line="11">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-10-16T15:45:40.642620" level="INFO">${HHmm} = 1545</msg>
+<var>${HHmm}</var>
+<arg>result_format=%H%M</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.642620" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-10-16T15:45:40.643960" level="INFO">${DDMM} = 1610</msg>
+<var>${DDMM}</var>
+<arg>result_format=%d%m</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.643960" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-10-16T15:45:40.644459" level="INFO">${YYYY} = 2025</msg>
+<var>${YYYY}</var>
+<arg>result_format=%Y</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.644459" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>HHmm: ${HHmm}, DDMM: ${DDMM}, YYYY: ${YYYY}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.644938" elapsed="0.000439"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-16T15:45:40.645377" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.645377" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-16T15:45:40.645377" level="INFO">${data} = {'year': '1545', 'price': '1610', 'CPU model': 'cpu aja', 'Hard disk size': '2025'}</msg>
+<var>${data}</var>
+<arg>year=${HHmm}</arg>
+<arg>price=${DDMM}</arg>
+<arg>CPU model=cpu aja</arg>
+<arg>Hard disk size=${YYYY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.645377" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-16T15:45:40.645377" level="INFO">${payload} = {'name': 'This is rudi test', 'data': {'year': '1545', 'price': '1610', 'CPU model': 'cpu aja', 'Hard disk size': '2025'}}</msg>
+<var>${payload}</var>
+<arg>name=This is rudi test</arg>
+<arg>data=${data}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.645377" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-10-16T15:45:40.645377" level="INFO">Creating Session using : alias=restful, url=https://api.restful-api.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>restful</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-10-16T15:45:40.645377" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-16T15:45:41.083755" level="INFO">POST Request : url=https://api.restful-api.dev/objects 
+ path_url=/objects 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '122', 'Content-Type': 'application/json'} 
+ body=b'{"name": "This is rudi test", "data": {"year": "1545", "price": "1610", "CPU model": "cpu aja", "Hard disk size": "2025"}}' 
+ </msg>
+<msg time="2025-10-16T15:45:41.088788" level="INFO">POST Response : url=https://api.restful-api.dev/objects 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 16 Oct 2025 08:45:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'cf-cache-status': 'DYNAMIC', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EC%2BFDzvutTiZXNZu2U9%2F04Ry428LhI4HnPOeUajC%2BeGBXroCAqvNgosA41PBxdKr5Hca2Sdfh4IJ1SAsUysPponZVK%2FU%2B3oyg3HKLZ9Ou413TzA%3D"}]}', 'Content-Encoding': 'gzip', 'CF-RAY': '98f64731fa598210-SIN', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":"ff8081819782e69e0199ec31bb595e8a","name":"This is rudi test","createdAt":"2025-10-16T08:45:06.265+00:00","data":{"year":"1545","price":"1610","CPU model":"cpu aja","Hard disk size":"2025"}} 
+ </msg>
+<msg time="2025-10-16T15:45:41.088788" level="INFO">C:\Users\rudii\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.restful-api.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-10-16T15:45:41.088788" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>restful</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-16T15:45:40.647797" elapsed="0.440991"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Body: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-16T15:45:41.088788" level="INFO">${resp_json} = {'id': 'ff8081819782e69e0199ec31bb595e8a', 'name': 'This is rudi test', 'createdAt': '2025-10-16T08:45:06.265+00:00', 'data': {'year': '1545', 'price': '1610', 'CPU model': 'cpu aja', 'Hard disk size'...</msg>
+<var>${resp_json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-16T15:45:41.088788" level="INFO">${resp_data} = {'year': '1545', 'price': '1610', 'CPU model': 'cpu aja', 'Hard disk size': '2025'}</msg>
+<var>${resp_data}</var>
+<arg>${resp_json['data']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-16T15:45:41.088788" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${resp_json}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.088788" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Object ID: ${resp_json['id']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.094276" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp_json['name']}</arg>
+<arg>${payload['name']}</arg>
+<arg>name not match!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.094276" elapsed="0.001164"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp_data['year']}</arg>
+<arg>${data['year']}</arg>
+<arg>year not match!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.096460" elapsed="0.001045"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp_data['price']}</arg>
+<arg>${data['price']}</arg>
+<arg>price not match!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.097505" elapsed="0.001093"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp_data['CPU model']}</arg>
+<arg>${data['CPU model']}</arg>
+<arg>CPU model not match!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.098598" elapsed="0.001023"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp_data['Hard disk size']}</arg>
+<arg>${data['Hard disk size']}</arg>
+<arg>Hard disk size not match!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-16T15:45:41.100665" elapsed="0.001085"/>
+</kw>
+<doc>Send Req Payload with value based on timestamp</doc>
+<status status="PASS" start="2025-10-16T15:45:40.637616" elapsed="0.464134"/>
+</test>
+<status status="PASS" start="2025-10-16T15:45:40.533593" elapsed="0.569181"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Post-Object" id="s1" pass="1" fail="0" skip="0">Post-Object</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
